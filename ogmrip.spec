@@ -59,7 +59,6 @@ Cechy:
 Summary:	%{name} libraries
 Summary(pl):	Biblioteki %{name}
 Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
 
 %description libs
 %{name} libraries.
