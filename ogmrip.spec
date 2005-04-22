@@ -1,25 +1,34 @@
+#
+# Conditional build:
+%bcond_without	matroska	# don't build with matroska support
+#
 Summary:	Ripping and encoding DVD into AVI/OGM files
 Summary(pl):	Zgrywanie i kodowanie DVD do plików AVI/OGM
 Name:		ogmrip
-Version:	0.7.1
+Version:	0.8.1
 Release:	1
 License:	LGPL
 Group:		X11/Applications
 Source0:	http://dl.sf.net/ogmrip/%{name}-%{version}.tar.gz
-# Source0-md5:	601470fc028b7c14b9e84455d198b8f9
-BuildRequires:	gocr
-BuildRequires:	lame
-BuildRequires:	libdvdread-devel
-BuildRequires:	libgnomeui-devel
-BuildRequires:	mplayer
-BuildRequires:	ogmtools
-BuildRequires:	vorbis-tools
+# Source0-md5:	3ca5df0e2628d41b713f9578e1fb08dd
+BuildRequires:	gettext-devel
+BuildRequires:	gocr >= 0.39
+BuildRequires:	hal-devel >= 0.4.2
+BuildRequires:	lame >= 3.96
+BuildRequires:	libdvdread-devel >= 0.9
+BuildRequires:	libgnomeui-devel >= 2.6.0
+BuildRequires:	libstdc++-devel
+%{?with_matroska:BuildRequires:	mkvtoolnix >= 0.9.5}
+BuildRequires:	mplayer >= 0.92
+BuildRequires:	ogmtools >= 1.0
 BuildRequires:	pkgconfig
-Requires:	gocr
-Requires:	lame
-Requires:	mplayer
-Requires:	ogmtools
-Requires:	vorbis-tools
+BuildRequires:	vorbis-tools >= 1.0
+Requires:	gocr >= 0.39
+Requires:	lame >= 3.96
+%{?with_matroska:Requires:	mkvtoolnix >= 0.9.5}
+Requires:	mplayer >= 0.92
+Requires:	ogmtools >= 1.0
+Requires:	vorbis-tools >= 1.0
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -85,7 +94,7 @@ Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static lib3ds libraries.
+Static %{name} libraries.
 
 %description static -l pl
 Statyczne biblioteki %{name}.
