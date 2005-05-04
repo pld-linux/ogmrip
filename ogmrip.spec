@@ -9,7 +9,7 @@ Version:	0.8.2
 Release:	1
 License:	LGPL
 Group:		X11/Applications
-Source0:	http://dl.sf.net/ogmrip/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/ogmrip/%{name}-%{version}.tar.gz
 # Source0-md5:	c84a295d1b67fa69b8c81b89f54c4acc
 BuildRequires:	gettext-devel
 BuildRequires:	gocr >= 0.39
