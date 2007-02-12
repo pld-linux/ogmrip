@@ -3,7 +3,7 @@
 %bcond_without	matroska	# don't build with matroska support
 #
 Summary:	Ripping and encoding DVD into AVI/OGM files
-Summary(pl):	Zgrywanie i kodowanie DVD do plikÛw AVI/OGM
+Summary(pl.UTF-8):   Zgrywanie i kodowanie DVD do plik√≥w AVI/OGM
 Name:		ogmrip
 Version:	0.9.0
 Release:	1
@@ -49,55 +49,55 @@ Features:
 - supports subtitles extraction
 - rips contiguous chapters
 
-%description -l pl
-OGMRip jest aplikacj± i zestawem bibliotek s≥uø±cymi do zgrywania i
-kodowania DVD do plikÛw AVI/OGM przy uøyciu wielu rÛønych kodekÛw. Do
-wykonywania zadaÒ uøywa mplayera, mencodera, ogmtools, oggenc i lame.
+%description -l pl.UTF-8
+OGMRip jest aplikacjƒÖ i zestawem bibliotek s≈Çu≈ºƒÖcymi do zgrywania i
+kodowania DVD do plik√≥w AVI/OGM przy u≈ºyciu wielu r√≥≈ºnych kodek√≥w. Do
+wykonywania zada≈Ñ u≈ºywa mplayera, mencodera, ogmtools, oggenc i lame.
 
 Cechy:
-- przekodowuje z DVD lub plikÛw,
-- na wyj∂ciu daje pliki ogm, avi lub matroska,
-- umoøliwia uøywanie wielu kodekÛw (ogg vorbis, mp3, pcm, ac3, xvid,
+- przekodowuje z DVD lub plik√≥w,
+- na wyj≈õciu daje pliki ogm, avi lub matroska,
+- umo≈ºliwia u≈ºywanie wielu kodek√≥w (ogg vorbis, mp3, pcm, ac3, xvid,
   lavc),
 - oblicza tempo bitowe dla danego rozmiaru pliku,
 - oblicza parametry obcinania i skalowania,
-- uøywa kodekÛw z ustawionymi parametrami maksymalnej jako∂ci,
-- wspiera wydobycie napisÛw,
-- zgrywa ci±g≥e rozdzia≥y.
+- u≈ºywa kodek√≥w z ustawionymi parametrami maksymalnej jako≈õci,
+- wspiera wydobycie napis√≥w,
+- zgrywa ciƒÖg≈Çe rozdzia≈Çy.
 
 %package libs
 Summary:	%{name} libraries
-Summary(pl):	Biblioteki %{name}
+Summary(pl.UTF-8):   Biblioteki %{name}
 Group:		Libraries
 
 %description libs
 %{name} libraries.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Biblioteki %{name}.
 
 %package devel
 Summary:	%{name} header files
-Summary(pl):	Pliki nag≥Ûwkowe %{name}
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe %{name}
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 %{name} header files.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe %{name}.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe %{name}.
 
 %package static
 Summary:	Static %{name} libraries
-Summary(pl):	Statyczne biblioteki %{name}
+Summary(pl.UTF-8):   Statyczne biblioteki %{name}
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static %{name} libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne biblioteki %{name}.
 
 %prep
