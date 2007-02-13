@@ -3,7 +3,7 @@
 %bcond_without	matroska	# don't build with matroska support
 #
 Summary:	Ripping and encoding DVD into AVI/OGM files
-Summary(pl.UTF-8):   Zgrywanie i kodowanie DVD do plików AVI/OGM
+Summary(pl.UTF-8):	Zgrywanie i kodowanie DVD do plików AVI/OGM
 Name:		ogmrip
 Version:	0.9.0
 Release:	1
@@ -67,7 +67,7 @@ Cechy:
 
 %package libs
 Summary:	%{name} libraries
-Summary(pl.UTF-8):   Biblioteki %{name}
+Summary(pl.UTF-8):	Biblioteki %{name}
 Group:		Libraries
 
 %description libs
@@ -78,7 +78,7 @@ Biblioteki %{name}.
 
 %package devel
 Summary:	%{name} header files
-Summary(pl.UTF-8):   Pliki nagłówkowe %{name}
+Summary(pl.UTF-8):	Pliki nagłówkowe %{name}
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 
@@ -90,7 +90,7 @@ Pliki nagłówkowe %{name}.
 
 %package static
 Summary:	Static %{name} libraries
-Summary(pl.UTF-8):   Statyczne biblioteki %{name}
+Summary(pl.UTF-8):	Statyczne biblioteki %{name}
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
