@@ -11,8 +11,8 @@ License:	LGPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/ogmrip/%{name}-%{version}.tar.gz
 # Source0-md5:	432991f4502ebba8fee51b527ef5b6af
-BuildRequires:	enca-devel
 BuildRequires:	eject
+BuildRequires:	enca-devel
 BuildRequires:	mencoder
 BuildRequires:	gettext-devel
 BuildRequires:	gocr >= 0.39
@@ -118,7 +118,10 @@ Statyczne biblioteki %{name}.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/{audio-codecs,containers,subp-codecs,video-codecs}/*.{la,a}
 
 %find_lang %{name}
 
@@ -128,6 +131,9 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %gconf_schema_install
 
+%post	libs -p /sbin/ldconfig
+%postun	libs -p /sbin/ldconfig
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README TODO
@@ -136,21 +142,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
 %{_datadir}/%{name}
-%{_mandir}/man1/*.1.*
-%dir %{_gtkdocdir}/ogmdvd
-%doc %{_gtkdocdir}/ogmdvd/*
-%dir %{_gtkdocdir}/ogmdvd-gtk
-%doc %{_gtkdocdir}/ogmdvd-gtk/*
-%dir %{_gtkdocdir}/ogmjob
-%doc %{_gtkdocdir}/ogmjob/*
-%dir %{_gtkdocdir}/ogmrip-gtk
-%doc %{_gtkdocdir}/ogmrip-gtk/*
-%dir %{_gtkdocdir}/ogmrip
-%doc %{_gtkdocdir}/ogmrip/*
+%{_mandir}/man1/*.1*
+%{_gtkdocdir}/ogmdvd
+%{_gtkdocdir}/ogmdvd-gtk
+%{_gtkdocdir}/ogmjob
+%{_gtkdocdir}/ogmrip
+%{_gtkdocdir}/ogmrip-gtk
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/audio-codecs
 %attr(755,root,root) %{_libdir}/%{name}/audio-codecs/*.so
@@ -165,17 +166,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/*.la
-%{_libdir}/%{name}/audio-codecs/*.la
-%{_libdir}/%{name}/containers/*.la
-%{_libdir}/%{name}/subp-codecs/*.la
-%{_libdir}/%{name}/video-codecs/*.la
 %{_includedir}/*
 %{_pkgconfigdir}/*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/*.a
-%{_libdir}/%{name}/audio-codecs/*.a
-%{_libdir}/%{name}/containers/*.a
-%{_libdir}/%{name}/subp-codecs/*.a
-%{_libdir}/%{name}/video-codecs/*.a
