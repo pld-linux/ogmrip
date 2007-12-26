@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Zgrywanie i kodowanie DVD do plików AVI/OGM
 Name:		ogmrip
 Version:	0.11.1
 Release:	1
-License:	LGPL
+License:	LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/ogmrip/%{name}-%{version}.tar.gz
 # Source0-md5:	432991f4502ebba8fee51b527ef5b6af
@@ -28,6 +28,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtheora-devel >= 1.0-0.alpha5
 BuildRequires:	libuuid-devel
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.198
 # TODO: remove configure checks (just assume support for everything, mkvtoolnix 2.x)
 BuildRequires:	mencoder >= 3:1.0-3.rc1
 %{?with_matroska:BuildRequires:	mkvtoolnix >= 2}
