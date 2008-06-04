@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	matroska	# don't build with matroska support
+%bcond_without	static_libs	# don't build static library
 #
 Summary:	Ripping and encoding DVD into AVI/OGM files
 Summary(pl.UTF-8):	Zgrywanie i kodowanie DVD do plików AVI/OGM
@@ -129,6 +130,7 @@ Statyczne biblioteki %{name}.
 	OGMMERGE_PROG=/usr/bin/ogmmerge \
 	OGMSPLIT_PROG=/usr/bin/ogmsplit \
 	--disable-schemas-install \
+	%{!?with_static_libs:--disable-static}
 	--with-html-dir=%{_gtkdocdir} \
 	--with-mplayer-version=1.0rc1
 %{__make}
@@ -224,6 +226,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_gtkdocdir}/ogmrip
 %{_gtkdocdir}/ogmrip-gtk
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libogmdvd.a
@@ -232,3 +235,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libogmrip.a
 %{_libdir}/libogmrip-gtk.a
 %{_libdir}/libogmrip-mplayer.a
+%endif
