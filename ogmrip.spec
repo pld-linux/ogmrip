@@ -7,7 +7,7 @@ Summary:	Ripping and encoding DVD into AVI/OGM files
 Summary(pl.UTF-8):	Zgrywanie i kodowanie DVD do plików AVI/OGM
 Name:		ogmrip
 Version:	0.12.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/ogmrip/%{name}-%{version}.tar.gz
@@ -233,9 +233,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libogmdvd.a
 %{_libdir}/libogmdvd-gtk.a
-%{_libdir}/libogmdvd-lavc.a
 %{_libdir}/libogmjob.a
 %{_libdir}/libogmrip.a
 %{_libdir}/libogmrip-gtk.a
+%{_libdir}/libogmrip-lavc.a
 %{_libdir}/libogmrip-mplayer.a
 %endif
