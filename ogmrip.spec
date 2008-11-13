@@ -6,12 +6,12 @@
 Summary:	Ripping and encoding DVD into AVI/OGM files
 Summary(pl.UTF-8):	Zgrywanie i kodowanie DVD do plików AVI/OGM
 Name:		ogmrip
-Version:	0.11.2
-Release:	2
+Version:	0.12.2
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/ogmrip/%{name}-%{version}.tar.gz
-# Source0-md5:	fa9123dee79af4b51e959695a2b99124
+# Source0-md5:	daa79ff5e8342945df1e29ac1405b615
 URL:		http://ogmrip.sourceforge.net/en/index.html
 BuildRequires:	GConf2-devel >= 2.6.0
 BuildRequires:	dbus-glib-devel >= 0.3.0
@@ -35,15 +35,15 @@ BuildRequires:	rpmbuild(macros) >= 1.198
 BuildRequires:	mencoder >= 3:1.0-3.rc1
 %{?with_matroska:BuildRequires:	mkvtoolnix >= 2}
 Requires(post,preun):	GConf2 >= 2.6.0
+Requires:	%{name}-libs = %{version}-%{release}
 Requires:	eject
 Requires:	gocr >= 0.39
 Requires:	lame >= 3.96
+Requires:	mencoder
 %{?with_matroska:Requires:	mkvtoolnix >= 2}
 Requires:	mplayer >= 3:1.0-3.rc1
-Requires:	mencoder
 Requires:	ogmtools >= 1.0
 Requires:	vorbis-tools >= 1:1.0
-Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -130,7 +130,7 @@ Statyczne biblioteki %{name}.
 	OGMMERGE_PROG=/usr/bin/ogmmerge \
 	OGMSPLIT_PROG=/usr/bin/ogmsplit \
 	--disable-schemas-install \
-	%{!?with_static_libs:--disable-static}
+	%{!?with_static_libs:--disable-static} \
 	--with-html-dir=%{_gtkdocdir} \
 	--with-mplayer-version=1.0rc1
 %{__make}
@@ -163,16 +163,14 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/dvdcpy
 %attr(755,root,root) %{_bindir}/ogmrip
-%attr(755,root,root) %{_bindir}/srtutil
-%attr(755,root,root) %{_bindir}/subp2pgm
+%attr(755,root,root) %{_bindir}/subp*
 %attr(755,root,root) %{_bindir}/theoraenc
 %{_sysconfdir}/gconf/schemas/ogmrip.schemas
 %{_desktopdir}/ogmrip.desktop
 %{_pixmapsdir}/ogmrip.png
 %{_datadir}/%{name}
 %{_mandir}/man1/dvdcpy.1*
-%{_mandir}/man1/srtutil.1*
-%{_mandir}/man1/subp2pgm.1*
+%{_mandir}/man1/subp*.1*
 
 %files libs
 %defattr(644,root,root,755)
@@ -184,19 +182,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libogmjob.so.0
 %attr(755,root,root) %{_libdir}/libogmrip.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libogmrip.so.0
+%attr(755,root,root) %{_libdir}/libogmrip-lavc.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libogmrip-lavc.so.0
 %attr(755,root,root) %{_libdir}/libogmrip-gtk.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libogmrip-gtk.so.0
 %attr(755,root,root) %{_libdir}/libogmrip-mplayer.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libogmrip-mplayer.so.0
 %dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/audio-codecs
-%attr(755,root,root) %{_libdir}/%{name}/audio-codecs/*.so
-%dir  %{_libdir}/%{name}/containers
-%attr(755,root,root) %{_libdir}/%{name}/containers/*.so
-%dir %{_libdir}/%{name}/subp-codecs
-%attr(755,root,root) %{_libdir}/%{name}/subp-codecs/*.so
-%dir %{_libdir}/%{name}/video-codecs
-%attr(755,root,root) %{_libdir}/%{name}/video-codecs/*.so
+%dir %{_libdir}/%{name}/audio-plugins
+%attr(755,root,root) %{_libdir}/%{name}/audio-plugins/*.so
+%dir  %{_libdir}/%{name}/container-plugins
+%attr(755,root,root) %{_libdir}/%{name}/container-plugins/*.so
+%dir %{_libdir}/%{name}/subp-plugins
+%attr(755,root,root) %{_libdir}/%{name}/subp-plugins/*.so
+%dir %{_libdir}/%{name}/video-plugins
+%attr(755,root,root) %{_libdir}/%{name}/video-plugins/*.so
 
 %files devel
 %defattr(644,root,root,755)
@@ -205,12 +205,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libogmjob.so
 %attr(755,root,root) %{_libdir}/libogmrip.so
 %attr(755,root,root) %{_libdir}/libogmrip-gtk.so
+%attr(755,root,root) %{_libdir}/libogmrip-lavc.so
 %attr(755,root,root) %{_libdir}/libogmrip-mplayer.so
 %{_libdir}/libogmdvd.la
 %{_libdir}/libogmdvd-gtk.la
 %{_libdir}/libogmjob.la
 %{_libdir}/libogmrip.la
 %{_libdir}/libogmrip-gtk.la
+%{_libdir}/libogmrip-lavc.la
 %{_libdir}/libogmrip-mplayer.la
 %{_includedir}/ogmdvd
 %{_includedir}/ogmjob
@@ -231,6 +233,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libogmdvd.a
 %{_libdir}/libogmdvd-gtk.a
+%{_libdir}/libogmdvd-lavc.a
 %{_libdir}/libogmjob.a
 %{_libdir}/libogmrip.a
 %{_libdir}/libogmrip-gtk.a
