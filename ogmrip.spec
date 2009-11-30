@@ -20,6 +20,7 @@ BuildRequires:	enchant-devel >= 1.1.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.6.0
 BuildRequires:	gtk+2-devel >= 2:2.10.0
+BuildRequires:	gtk-doc
 BuildRequires:	hal-devel >= 0.5.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libdvdread-devel >= 0.9.7
@@ -29,11 +30,12 @@ BuildRequires:	libnotify-devel >= 0.4.3
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtheora-devel >= 1.0-0.alpha5
 BuildRequires:	libuuid-devel
-BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.198
 # TODO: remove configure checks (just assume support for everything, mkvtoolnix 2.x)
 BuildRequires:	mencoder >= 3:1.0-3.rc1
 %{?with_matroska:BuildRequires:	mkvtoolnix >= 2}
+BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.198
+BuildRequires:	which
 Requires(post,preun):	GConf2 >= 2.6.0
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	eject
@@ -118,17 +120,17 @@ Statyczne biblioteki %{name}.
 
 %build
 %configure \
-	EJECT_PROG=/usr/bin/eject \
-	FAAC_PROG=/usr/bin/faac \
-	GOCR_PROG=/usr/bin/gocr \
-	LAME_PROG=/usr/bin/lame \
-	MENCODER_PROG=/usr/bin/mencoder \
-	MKVMERGE_PROG=/usr/bin/mkvmerge \
-	MPLAYER_PROG=/usr/bin/mplayer \
-	OCRAD_PROG=/usr/bin/ocrad \
-	OGGENC_PROG=/usr/bin/oggenc \
-	OGMMERGE_PROG=/usr/bin/ogmmerge \
-	OGMSPLIT_PROG=/usr/bin/ogmsplit \
+	EJECT_PROG=%{_bindir}/eject \
+	FAAC_PROG=%{_bindir}/faac \
+	GOCR_PROG=%{_bindir}/gocr \
+	LAME_PROG=%{_bindir}/lame \
+	MENCODER_PROG=%{_bindir}/mencoder \
+	MKVMERGE_PROG=%{_bindir}/mkvmerge \
+	MPLAYER_PROG=%{_bindir}/mplayer \
+	OCRAD_PROG=%{_bindir}/ocrad \
+	OGGENC_PROG=%{_bindir}/oggenc \
+	OGMMERGE_PROG=%{_bindir}/ogmmerge \
+	OGMSPLIT_PROG=%{_bindir}/ogmsplit \
 	--disable-schemas-install \
 	%{!?with_static_libs:--disable-static} \
 	--with-html-dir=%{_gtkdocdir} \
