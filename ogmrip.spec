@@ -177,19 +177,19 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libogmdvd.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libogmdvd.so.0
+%attr(755,root,root) %ghost %{_libdir}/libogmdvd.so.1
 %attr(755,root,root) %{_libdir}/libogmdvd-gtk.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libogmdvd-gtk.so.0
+%attr(755,root,root) %ghost %{_libdir}/libogmdvd-gtk.so.1
 %attr(755,root,root) %{_libdir}/libogmjob.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libogmjob.so.0
+%attr(755,root,root) %ghost %{_libdir}/libogmjob.so.1
 %attr(755,root,root) %{_libdir}/libogmrip.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libogmrip.so.0
+%attr(755,root,root) %ghost %{_libdir}/libogmrip.so.1
 %attr(755,root,root) %{_libdir}/libogmrip-lavc.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libogmrip-lavc.so.0
+%attr(755,root,root) %ghost %{_libdir}/libogmrip-lavc.so.1
 %attr(755,root,root) %{_libdir}/libogmrip-gtk.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libogmrip-gtk.so.0
+%attr(755,root,root) %ghost %{_libdir}/libogmrip-gtk.so.1
 %attr(755,root,root) %{_libdir}/libogmrip-mplayer.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libogmrip-mplayer.so.0
+%attr(755,root,root) %ghost %{_libdir}/libogmrip-mplayer.so.1
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/audio-plugins
 %attr(755,root,root) %{_libdir}/%{name}/audio-plugins/*.so
