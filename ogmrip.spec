@@ -17,7 +17,7 @@ BuildRequires:	GConf2-devel >= 2.6.0
 BuildRequires:	dbus-glib-devel >= 0.3.0
 BuildRequires:	enca-devel
 BuildRequires:	enchant-devel >= 1.1.0
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.6.0
 BuildRequires:	gtk+2-devel >= 2:2.10.0
 BuildRequires:	gtk-doc
